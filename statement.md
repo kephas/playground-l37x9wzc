@@ -2,7 +2,7 @@
 
 Okay, let's start with something basic that we encounter a lot in Functional Programming: an Option.
 
-```haskell runnable
+```haskell
 data Option a = Some a | None deriving Show
 ```
 
@@ -23,5 +23,8 @@ formula1 x y z =
   case x /? y of
     None -> None
     Some xy -> Some $ xy + z
-```
 
+main = do
+  print $ formula1 8 2 1
+  print $ formula1 8 0 1
+```
