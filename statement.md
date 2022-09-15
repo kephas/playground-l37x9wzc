@@ -20,7 +20,7 @@ num /? denom =
   else
     Some $ num / denom
 
-formula1 :: Num a => a -> a -> a -> Option a
+formula1 :: (Eq a, Num a) => a -> a -> a -> Option a
 formula1 x y z =
   case x /? y of
     None -> None
