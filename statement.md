@@ -11,6 +11,8 @@ Great, with this, we can represent a result that can be absent, in case of error
 Better yet, we cannot write code that tries to use an absent value, because we get the value from the pattern where it exists:
 
 ```haskell runnable
+data Option a = Some a | None deriving Show
+
 (/?) :: Num a => a -> a -> Option a
 num /? denom =
   if denom == 0 then
