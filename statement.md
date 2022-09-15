@@ -13,14 +13,14 @@ Better yet, we cannot write code that tries to use an absent value, because we g
 ```haskell runnable
 data Option a = Some a | None deriving Show
 
-(/?) :: Num a => a -> a -> Option a
+(/?) :: (Eq a, Fractional a) => a -> a -> Option a
 num /? denom =
   if denom == 0 then
     None
   else
     Some $ num / denom
 
-formula1 :: (Eq a, Num a) => a -> a -> a -> Option a
+formula1 :: (Eq a, Fractional a) => a -> a -> a -> Option a
 formula1 x y z =
   case x /? y of
     None -> None
