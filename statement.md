@@ -11,17 +11,17 @@ Great, with this, we can represent a result that can be absent, in case of error
 Better yet, we cannot write code that tries to use an absent value, because we get the value from the pattern where it exists:
 
 ```haskell runnable
-safeDiv :: Num a => a -> a -> Option a
-safeDiv num denom =
+(/?) :: Num a => a -> a -> Option a
+num /? denom =
   if denom == 0 then
-    Some $ num / denom
-  else
     None
+  else
+    Some $ num / denom
 
 formula1 :: Num a => a -> a -> a -> Option a
-formula1 x y z = 
+formula1 x y z =
+  case x /? y of
+    None -> None
+    Some xy -> Some $ xy + z
+```
 
-
-# Advanced usage
-
-If you want a more complex example (external libraries, viewers...), use the [Advanced Haskell template](https://tech.io/select-repo/2320)
