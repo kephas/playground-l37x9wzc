@@ -46,7 +46,7 @@ Pretty straightforward, huh? Let's see it in action:
 data Option a = Some a | None
   deriving Show
 
-optMap :: (a -> b) -> Maybe a -> Maybe b
+optMap :: (a -> b) -> Option a -> Option b
 optMap _ None = None
 optMap f (Some x) = Some $ f x
 
